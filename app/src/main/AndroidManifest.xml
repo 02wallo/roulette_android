@@ -44,6 +44,10 @@
             </intent-filter>
         </activity>
         <activity android:name="com.nextapps.naswall.NASWall" android:configChanges="keyboardHidden|orientation" />
+        <!-- Tnk -->
+        <meta-data android:name="tnkad_app_id" android:value="a0306030-6001-1578-8751-10050f0c040b"/>
+        <activity android:name="com.tnkfactory.ad.AdWallActivity" />
+        <activity android:name="com.tnkfactory.ad.AdMediaActivity" android:screenOrientation="sensorLandscape"/>
 
     </application>
 
