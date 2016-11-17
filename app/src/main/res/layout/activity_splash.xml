@@ -3,12 +3,23 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_network_test_string"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="300dp"
+        android:textSize="15dp"
+        android:gravity="center" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_network_test"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="30dp"
+        android:text="network test"/>
+
 
     <com.kakao.usermgmt.LoginButton
         android:id="@+id/com_kakao_login"

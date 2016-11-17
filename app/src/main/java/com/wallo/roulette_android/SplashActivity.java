@@ -10,6 +10,11 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.igaworks.IgawCommon;
 import com.kakao.auth.Session;
 import com.kakao.auth.KakaoSDK;
@@ -18,9 +23,15 @@ import com.kakao.auth.ISessionCallback;
 import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
 import com.wallo.roulette_android.common.BaseActivity;
+import com.wallo.roulette_android.network.MyVolley;
+
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.kakao.util.helper.Utility.getPackageInfo;
 
@@ -30,6 +41,19 @@ import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class SplashActivity extends BaseActivity {
     private SessionCallback callback;
+    public String server_url = "";
+
+    @OnClick (R.id.btn_network_test) void networkTest(){
+        Log.d("network", "test");
+        final RequestQueue queue = MyVolley.getInstance(this).getRequestQueue();
+
+//        JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.POST,
+//                server_url,
+//                new JSONObject(),
+//                networkSuccessListener(),
+//                networkErrorListener());
+//        queue.add(myReq);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +64,13 @@ public class SplashActivity extends BaseActivity {
 
         if (!Session.getCurrentSession().checkAndImplicitOpen()) {
             setContentView(R.layout.activity_splash);
+        } else {
+            setContentView(R.layout.activity_splash);
         }
 
         IgawCommon.startApplication(SplashActivity.this);
+        ButterKnife.bind(this);
+
     }
 
     public static String getKeyHash(final Context context) {
@@ -83,9 +111,9 @@ public class SplashActivity extends BaseActivity {
         @Override
         public void onSessionOpened() {
             Log.d("kakao", "onSessionOpened");
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+//            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+//            startActivity(intent);
+//            finish();
         }
 
         @Override
@@ -96,5 +124,23 @@ public class SplashActivity extends BaseActivity {
 
             setContentView(R.layout.activity_splash);
         }
+    }
+
+    private Response.Listener<JSONObject> networkSuccessListener(){
+        return new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("network", response.toString());
+            }
+        };
+    }
+
+    private Response.ErrorListener networkErrorListener(){
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("network", error.toString());
+            }
+        };
     }
 }
