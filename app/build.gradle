@@ -28,4 +28,6 @@ dependencies {
     compile group: project.KAKAO_SDK_GROUP, name: 'kakaostory', version: project.KAKAO_SDK_VERSION
     compile 'com.mcxiaoke.volley:library:1.0.8'
     testCompile 'junit:junit:4.12'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
