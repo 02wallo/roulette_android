@@ -10,6 +10,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,12 +24,15 @@ import com.kakao.auth.ISessionCallback;
 import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
 import com.wallo.roulette_android.common.BaseActivity;
+import com.wallo.roulette_android.network.CustomRequest;
 import com.wallo.roulette_android.network.MyVolley;
 
 import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -46,13 +50,10 @@ public class SplashActivity extends BaseActivity {
     @OnClick (R.id.btn_network_test) void networkTest(){
         Log.d("network", "test");
         final RequestQueue queue = MyVolley.getInstance(this).getRequestQueue();
-
-//        JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.POST,
-//                server_url,
-//                new JSONObject(),
-//                networkSuccessListener(),
-//                networkErrorListener());
-//        queue.add(myReq);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("os","android");
+        CustomRequest myReq = new CustomRequest(Request.Method.POST, server_url, params, networkSuccessListener(), networkErrorListener());
+        queue.add(myReq);
     }
 
     @Override
