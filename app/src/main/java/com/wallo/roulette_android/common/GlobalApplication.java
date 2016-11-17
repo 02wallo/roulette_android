@@ -15,6 +15,7 @@ import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
+import com.nextapps.naswall.NASWall;
 
 /**
  * Created by Administrator on 2016-11-14.
@@ -41,6 +42,10 @@ public class GlobalApplication extends Application {
         return instance;
     }
 
+    public Context context = this;
+    public boolean appangTestMode = false;
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -65,6 +70,8 @@ public class GlobalApplication extends Application {
         };
 
         imageLoader = new ImageLoader(requestQueue, imageCache);
+
+        NASWall.init(context, appangTestMode);
     }
 
     @Override

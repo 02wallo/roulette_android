@@ -3,6 +3,9 @@
     package="com.wallo.roulette_android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:allowBackup="true"
@@ -27,10 +30,21 @@
         </activity>
 
         <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
-
+        <!-- kakao -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key"/>
+        <!-- appang -->
+        <meta-data android:name="naswall_app_key" android:value="55f3bf89d2f27809f62312c2f1b3eee9"/>
+        <activity android:name="com.nextapps.naswall.NASWallBrowser" android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.nextapps.naswall.NASWall" android:configChanges="keyboardHidden|orientation" />
+
     </application>
 
 </manifest>
