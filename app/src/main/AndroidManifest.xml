@@ -48,6 +48,19 @@
         <meta-data android:name="tnkad_app_id" android:value="a0306030-6001-1578-8751-10050f0c040b"/>
         <activity android:name="com.tnkfactory.ad.AdWallActivity" />
         <activity android:name="com.tnkfactory.ad.AdMediaActivity" android:screenOrientation="sensorLandscape"/>
+        <!-- adpopcorn -->
+        <meta-data android:name="igaworks_app_key" android:value="465069123" />
+        <meta-data android:name="igaworks_hash_key" android:value="64b0ab875a3a41eb" />
+        <meta-data android:name="igaworks_reward_server_type" android:value="server"/>
+        <activity android:name="com.igaworks.adpopcorn.activity.ApOfferWallActivity_NT"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <activity android:name="com.igaworks.adpopcorn.activity.ApCSActivity_NT"
+            android:theme="@android:style/Theme.NoTitleBar" />
+
+        <activity android:name="com.igaworks.adpopcorn.activity.ApVideoAdActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:screenOrientation="landscape"/>
 
     </application>
 

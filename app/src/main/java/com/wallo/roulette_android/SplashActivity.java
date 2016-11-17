@@ -10,6 +10,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.igaworks.IgawCommon;
 import com.kakao.auth.Session;
 import com.kakao.auth.KakaoSDK;
 
@@ -40,6 +41,8 @@ public class SplashActivity extends BaseActivity {
         if (!Session.getCurrentSession().checkAndImplicitOpen()) {
             setContentView(R.layout.activity_splash);
         }
+
+        IgawCommon.startApplication(SplashActivity.this);
     }
 
     public static String getKeyHash(final Context context) {
